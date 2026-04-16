@@ -9,6 +9,7 @@ const Router = createBrowserRouter([
     children: [
       {
         index: true,
+        loader: ()=> fetch("/friends.json"),
         element: <Homepage></Homepage>,
       },
       {

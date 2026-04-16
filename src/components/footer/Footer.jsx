@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="container mx-auto p-4">
                 <div className="border border-t-[#FAFAFA80]"></div>
             </div>
-            <div className="container mx-auto p-4 mb-8 flex flex-col items-center gap-2 md:justify-between md:flex-row">
+            <div className="container mx-auto p-4 pb-8 flex flex-col items-center gap-2 md:justify-between md:flex-row">
                 <div><p className="text-[#FAFAFA80]">© 2026 KeenKeeper. All rights reserved.</p></div>
                 <div className="flex gap-4">
                     <p className="text-[#FAFAFA80]">Privacy Policy</p>
