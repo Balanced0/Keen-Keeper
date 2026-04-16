@@ -26,7 +26,7 @@ const FriendDetails = () => {
     month: "long",
   });
   return (
-    <div className="container mx-auto p-4 grid grid-cols-2 gap-6 mt-20 mb-20">
+    <div className="container mx-auto p-4 grid grid-cols-[1fr_3fr] gap-6 mt-20 mb-20">
       <div className="flex flex-col gap-2">
         <div className="card bg-base-100 shadow-sm mb-2">
           <figure className="px-10 pt-10">
@@ -77,7 +77,7 @@ const FriendDetails = () => {
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="card bg-base-100 shadow-sm">
             <div className="card-body items-center text-center">
               <h2 className="card-title text-[#244D3F] font-semibold text-3xl">
@@ -115,23 +115,23 @@ const FriendDetails = () => {
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body">
             <p className="font-medium text-xl text-[#244D3F] mb-4">Quick Check-In</p>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
                 <div className="card bg-base-200">
                     <div className="card-body flex flex-col justify-center items-center">
-                        <LuPhoneCall size={20}/>
-                        <p className="text-md">Call</p>
+                        <LuPhoneCall size={26}/>
+                        <p className="text-lg">Call</p>
                     </div>
                 </div>
                 <div className="card bg-base-200">
                     <div className="card-body flex flex-col justify-center items-center">
-                        <IoMdText size={20}/>
-                        <p className="text-md">Text</p>
+                        <IoMdText size={26}/>
+                        <p className="text-lg">Text</p>
                     </div>
                 </div>
                 <div className="card bg-base-200">
                     <div className="card-body flex flex-col justify-center items-center">
-                        <BsCameraVideo size={20}/>
-                        <p className="text-md">Video</p>
+                        <BsCameraVideo size={26}/>
+                        <p className="text-lg">Video</p>
                     </div>
                 </div>
             </div>
