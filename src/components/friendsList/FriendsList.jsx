@@ -11,7 +11,7 @@ const FriendsList = ({ friendsData }) => {
     }
   };
   return (
-    <div className="container mx-auto p-4 grid grid-cols-4 gap-6 mb-20">
+    <div className="container mx-auto p-4 grid grid-cols-1 gap-6 mb-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {friendsData.map((friend) => {
         return (
           <div className="card bg-base-100 shadow-md">
