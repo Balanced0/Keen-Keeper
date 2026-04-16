@@ -6,11 +6,15 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { LuPhoneCall } from "react-icons/lu";
 import { IoMdText } from "react-icons/io";
 import { BsCameraVideo } from "react-icons/bs";
+import { useContext } from "react";
+import { timelineContext } from "../../App";
+import { toast } from "react-toastify";
 
 const FriendDetails = () => {
   const { id } = useParams();
   const friendsData = useLoaderData();
   const friend = friendsData.find((friend) => friend.id == id);
+
   const getStatusClass = (status) => {
     if (status === "overdue") {
       return "text-white bg-[#EF4444] rounded-full";
@@ -20,11 +24,32 @@ const FriendDetails = () => {
       return "text-white bg-[#244D3F] rounded-full";
     }
   };
+
   const [year, month, day] = friend.next_due_date.split("-");
   const date = new Date(friend.next_due_date);
   const monthName = date.toLocaleDateString("en-US", {
     month: "long",
   });
+
+  const handleCall = () => {
+    setCalls([...calls, friend]);
+    setTl([...tl, friend]);
+    toast.success(`Called ${friend.name}`);
+  };
+
+  const handleText = () => {
+    setTexts([...texts, friend]);
+    setTl([...tl, friend]);
+    toast.success(`Texted ${friend.name}`);
+  };
+
+  const handleVideo = () =>{
+    setVideos([...videos, friend]);
+    setTl([...tl, friend]);
+    toast.success(`Video called ${friend.name}`);
+  }
+
+  const { calls, setCalls, texts, setTexts, videos, setVideos, tl, setTl } = useContext(timelineContext);
   return (
     <div className="container mx-auto p-4 grid grid-cols-[1fr_3fr] gap-6 mt-20 mb-20">
       <div className="flex flex-col gap-2">
@@ -106,34 +131,41 @@ const FriendDetails = () => {
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body">
             <div className="flex justify-between items-center mb-4">
-                <p className="font-medium text-xl text-[#244D3F]">Relationship Goal</p>
-                <button className="btn">Edit</button>
+              <p className="font-medium text-xl text-[#244D3F]">
+                Relationship Goal
+              </p>
+              <button className="btn">Edit</button>
             </div>
-            <p><span className="text-[#64748B] text-lg">Connect every</span><span className="font-bold text-xl"> {friend.goal} days</span></p>
+            <p>
+              <span className="text-[#64748B] text-lg">Connect every</span>
+              <span className="font-bold text-xl"> {friend.goal} days</span>
+            </p>
           </div>
         </div>
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body">
-            <p className="font-medium text-xl text-[#244D3F] mb-4">Quick Check-In</p>
+            <p className="font-medium text-xl text-[#244D3F] mb-4">
+              Quick Check-In
+            </p>
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                <div className="card bg-base-200">
-                    <div className="card-body flex flex-col justify-center items-center">
-                        <LuPhoneCall size={26}/>
-                        <p className="text-lg">Call</p>
-                    </div>
+              <div className="card bg-base-200" onClick={() => handleCall()}>
+                <div className="card-body flex flex-col justify-center items-center">
+                  <LuPhoneCall size={26} />
+                  <p className="text-lg">Call</p>
                 </div>
-                <div className="card bg-base-200">
-                    <div className="card-body flex flex-col justify-center items-center">
-                        <IoMdText size={26}/>
-                        <p className="text-lg">Text</p>
-                    </div>
+              </div>
+              <div className="card bg-base-200" onClick={() => handleText()}>
+                <div className="card-body flex flex-col justify-center items-center">
+                  <IoMdText size={26} />
+                  <p className="text-lg">Text</p>
                 </div>
-                <div className="card bg-base-200">
-                    <div className="card-body flex flex-col justify-center items-center">
-                        <BsCameraVideo size={26}/>
-                        <p className="text-lg">Video</p>
-                    </div>
+              </div>
+              <div className="card bg-base-200" onClick={() => handleVideo()}>
+                <div className="card-body flex flex-col justify-center items-center">
+                  <BsCameraVideo size={26} />
+                  <p className="text-lg">Video</p>
                 </div>
+              </div>
             </div>
           </div>
         </div>
