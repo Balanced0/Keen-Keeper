@@ -3,6 +3,9 @@ import { useParams, useLoaderData } from "react-router";
 import { RiNotificationSnoozeLine } from "react-icons/ri";
 import { FiArchive } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { LuPhoneCall } from "react-icons/lu";
+import { IoMdText } from "react-icons/io";
+import { BsCameraVideo } from "react-icons/bs";
 
 const FriendDetails = () => {
   const { id } = useParams();
@@ -17,8 +20,13 @@ const FriendDetails = () => {
       return "text-white bg-[#244D3F] rounded-full";
     }
   };
+  const [year, month, day] = friend.next_due_date.split("-");
+  const date = new Date(friend.next_due_date);
+  const monthName = date.toLocaleDateString("en-US", {
+    month: "long",
+  });
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 grid grid-cols-2 gap-6 mt-20 mb-20">
       <div className="flex flex-col gap-2">
         <div className="card bg-base-100 shadow-sm mb-2">
           <figure className="px-10 pt-10">
@@ -68,7 +76,68 @@ const FriendDetails = () => {
           </div>
         </div>
       </div>
-      <div></div>
+      <div className="flex flex-col gap-6">
+        <div className="grid grid-cols-3 gap-6">
+          <div className="card bg-base-100 shadow-sm">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title text-[#244D3F] font-semibold text-3xl">
+                {friend.days_since_contact}
+              </h2>
+              <p className="text-[#64748B] text-lg">Days Since Contact</p>
+            </div>
+          </div>
+          <div className="card bg-base-100 shadow-sm">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title text-[#244D3F] font-semibold text-3xl">
+                {friend.goal}
+              </h2>
+              <p className="text-[#64748B] text-lg">Goal (Days)</p>
+            </div>
+          </div>
+          <div className="card bg-base-100 shadow-sm">
+            <div className="card-body items-center text-center">
+              <h2 className="card-title text-[#244D3F] font-semibold text-3xl">
+                {monthName} {day}, {year}
+              </h2>
+              <p className="text-[#64748B] text-lg">Next Due</p>
+            </div>
+          </div>
+        </div>
+        <div className="card bg-base-100 shadow-sm">
+          <div className="card-body">
+            <div className="flex justify-between items-center mb-4">
+                <p className="font-medium text-xl text-[#244D3F]">Relationship Goal</p>
+                <button className="btn">Edit</button>
+            </div>
+            <p><span className="text-[#64748B] text-lg">Connect every</span><span className="font-bold text-xl"> {friend.goal} days</span></p>
+          </div>
+        </div>
+        <div className="card bg-base-100 shadow-sm">
+          <div className="card-body">
+            <p className="font-medium text-xl text-[#244D3F] mb-4">Quick Check-In</p>
+            <div className="grid grid-cols-3 gap-4">
+                <div className="card bg-base-200">
+                    <div className="card-body flex flex-col justify-center items-center">
+                        <LuPhoneCall size={20}/>
+                        <p className="text-md">Call</p>
+                    </div>
+                </div>
+                <div className="card bg-base-200">
+                    <div className="card-body flex flex-col justify-center items-center">
+                        <IoMdText size={20}/>
+                        <p className="text-md">Text</p>
+                    </div>
+                </div>
+                <div className="card bg-base-200">
+                    <div className="card-body flex flex-col justify-center items-center">
+                        <BsCameraVideo size={20}/>
+                        <p className="text-md">Video</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
