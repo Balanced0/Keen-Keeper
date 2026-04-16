@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const FriendsList = ({ friendsData }) => {
   const getStatusClass = (status) => {
@@ -12,9 +13,9 @@ const FriendsList = ({ friendsData }) => {
   };
   return (
     <div className="container mx-auto p-4 grid grid-cols-1 gap-6 mb-20 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {friendsData.map((friend) => {
+      {friendsData.map((friend, id) => {
         return (
-          <div className="card bg-base-100 shadow-md">
+          <Link to={`/details/${friend.id}`} key={id} className="card bg-base-100 shadow-md">
             <figure className="px-10 pt-10">
               <img
                 src={friend.picture}
@@ -29,8 +30,8 @@ const FriendsList = ({ friendsData }) => {
               </p>
               <div className="flex flex-wrap justify-center gap-2">
                 {
-                friend.tags.map((tag)=>{
-                    return<div className="badge text-[#244D3F] bg-[#CBFADB]">{tag.toUpperCase()}</div>
+                friend.tags.map((tag, id)=>{
+                    return<div key={id} className="badge text-[#244D3F] bg-[#CBFADB]">{tag.toUpperCase()}</div>
                 })
               }
               </div>
@@ -38,7 +39,7 @@ const FriendsList = ({ friendsData }) => {
                 {friend.status}
               </div>
             </div>
-          </div>
+          </Link>
         );
       })}
     </div>
