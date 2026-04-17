@@ -39,7 +39,7 @@ const FriendDetails = () => {
       time: Date.now(),
     }
     setCalls([...calls, friend]);
-    setTl([...tl, newEvent]);
+    setTl([newEvent, ...tl]);
     toast.success(`Called ${friend.name}`);
   };
 
@@ -51,7 +51,7 @@ const FriendDetails = () => {
       time: Date.now(),
     }
     setTexts([...texts, friend]);
-    setTl([...tl, newEvent]);
+    setTl([newEvent, ...tl]);
     toast.success(`Texted ${friend.name}`);
   };
 
@@ -63,7 +63,7 @@ const FriendDetails = () => {
       time: Date.now(),
     }
     setVideos([...videos, friend]);
-    setTl([...tl, newEvent]);
+    setTl([newEvent, ...tl]);
     toast.success(`Video called ${friend.name}`);
   }
 
