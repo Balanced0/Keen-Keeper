@@ -7,7 +7,7 @@ import Video from "../../assets/video.png";
 import { FaAngleDown } from "react-icons/fa";
 
 const Timeline = () => {
-  const { calls, setCalls, texts, setTexts, videos, setVideos, tl, setTl } =
+  const { calls, texts, videos, tl } =
     useContext(timelineContext);
 
   const[view, setView] = useState("All");

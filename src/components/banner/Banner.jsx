@@ -1,7 +1,12 @@
 import React from "react";
 import { FaPlus } from "react-icons/fa6";
+import { useContext } from "react";
+import { timelineContext } from "../../App";
 
 const Banner = ({friendsData}) => {
+  const onTrackCounter = friendsData.filter((data)=>data.status==="on-track").length;
+  const overdueCounter = friendsData.filter((data)=>data.status==="overdue").length;
+  const { tl } = useContext(timelineContext);
   return (
     <div className="container mx-auto p-4 flex flex-col justify-center items-center text-center mt-20">
       <h1 className="font-bold text-5xl mb-4">
@@ -27,7 +32,7 @@ const Banner = ({friendsData}) => {
         </div>
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body items-center text-center">
-            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{friendsData.length}</h2>
+            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{onTrackCounter}</h2>
             <p className="text-[#64748B] text-lg">
               On Track
             </p>
@@ -35,7 +40,7 @@ const Banner = ({friendsData}) => {
         </div>
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body items-center text-center">
-            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{friendsData.length}</h2>
+            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{overdueCounter}</h2>
             <p className="text-[#64748B] text-lg">
               Need Attention
             </p>
@@ -43,7 +48,7 @@ const Banner = ({friendsData}) => {
         </div>
         <div className="card bg-base-100 shadow-sm">
           <div className="card-body items-center text-center">
-            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{friendsData.length}</h2>
+            <h2 className="card-title text-[#244D3F] font-semibold text-3xl">{tl.length}</h2>
             <p className="text-[#64748B] text-lg">
               Interactions This Month
             </p>
