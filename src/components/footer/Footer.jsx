@@ -11,9 +11,9 @@ const Footer = () => {
                 <p className="mb-6 text-[#E9E9E9] text-center">Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
                 <p className="font-medium text-xl text-white mb-4">Social Links</p>
                 <div className="flex gap-2">
-                    <div className="bg-white p-3 rounded-full flex items-center justify-center"><FaInstagram/></div>
-                    <div className="bg-white p-3 rounded-full flex items-center justify-center"><FaFacebookSquare/></div>
-                    <div className="bg-white p-3 rounded-full flex items-center justify-center"><FaXTwitter /></div>
+                    <div className="bg-white p-3 rounded-full flex items-center justify-center cursor-pointer"><FaInstagram/></div>
+                    <div className="bg-white p-3 rounded-full flex items-center justify-center cursor-pointer"><FaFacebookSquare/></div>
+                    <div className="bg-white p-3 rounded-full flex items-center justify-center cursor-pointer"><FaXTwitter /></div>
                 </div>
             </div>
             <div className="container mx-auto p-4">
@@ -22,9 +22,9 @@ const Footer = () => {
             <div className="container mx-auto p-4 pb-8 flex flex-col items-center gap-2 md:justify-between md:flex-row">
                 <div><p className="text-[#FAFAFA80]">© 2026 KeenKeeper. All rights reserved.</p></div>
                 <div className="flex gap-4">
-                    <p className="text-[#FAFAFA80]">Privacy Policy</p>
-                    <p className="text-[#FAFAFA80]">Terms of Service</p>
-                    <p className="text-[#FAFAFA80]">Cookies</p>
+                    <p className="text-[#FAFAFA80] cursor-pointer">Privacy Policy</p>
+                    <p className="text-[#FAFAFA80] cursor-pointer">Terms of Service</p>
+                    <p className="text-[#FAFAFA80] cursor-pointer">Cookies</p>
                 </div>
             </div>
         </div>

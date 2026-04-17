@@ -69,7 +69,7 @@ const FriendDetails = () => {
 
   const { calls, setCalls, texts, setTexts, videos, setVideos, tl, setTl } = useContext(timelineContext);
   return (
-    <div className="container mx-auto p-4 grid grid-cols-[1fr_3fr] gap-6 mt-20 mb-20">
+    <div className="container mx-auto p-4 grid grid-cols-1 gap-6 mt-20 mb-20 md:grid-cols-[1fr_3fr]">
       <div className="flex flex-col gap-2">
         <div className="card bg-base-100 shadow-sm mb-2">
           <figure className="px-10 pt-10">
@@ -93,7 +93,7 @@ const FriendDetails = () => {
                 );
               })}
             </div>
-            <p className="font-medium text-[#64748B] mb-3">"{friend.bio}"</p>
+            <p className="!italic font-medium text-[#64748B] mb-3">"{friend.bio}"</p>
             <p className="text-[#64748B] text-sm">Preferred: {friend.email}</p>
           </div>
         </div>
