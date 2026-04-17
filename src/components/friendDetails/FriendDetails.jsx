@@ -32,20 +32,38 @@ const FriendDetails = () => {
   });
 
   const handleCall = () => {
+    const newEvent = {
+      id: friend.id,
+      name: friend.name,
+      action: "Call",
+      time: Date.now(),
+    }
     setCalls([...calls, friend]);
-    setTl([...tl, friend]);
+    setTl([...tl, newEvent]);
     toast.success(`Called ${friend.name}`);
   };
 
   const handleText = () => {
+    const newEvent = {
+      id: friend.id,
+      name: friend.name,
+      action: "Text",
+      time: Date.now(),
+    }
     setTexts([...texts, friend]);
-    setTl([...tl, friend]);
+    setTl([...tl, newEvent]);
     toast.success(`Texted ${friend.name}`);
   };
 
   const handleVideo = () =>{
+    const newEvent = {
+      id: friend.id,
+      name: friend.name,
+      action: "Video",
+      time: Date.now(),
+    }
     setVideos([...videos, friend]);
-    setTl([...tl, friend]);
+    setTl([...tl, newEvent]);
     toast.success(`Video called ${friend.name}`);
   }
 
