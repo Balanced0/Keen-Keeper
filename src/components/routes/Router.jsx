@@ -5,6 +5,7 @@ import App from "../../App";
 import FriendDetails from "../friendDetails/FriendDetails";
 import Timeline from "../timeline/Timeline";
 import NotFound from "../notFound/NotFound";
+import Stats from "../stats/Stats";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,10 @@ const Router = createBrowserRouter([
       {
         path: "/timeline",
         element: <Timeline></Timeline>,
+      },
+      {
+        path: "/stats",
+        element: <Stats></Stats>
       },
       {
         path: "/details/:id",
