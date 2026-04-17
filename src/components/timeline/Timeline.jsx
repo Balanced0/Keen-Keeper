@@ -1,13 +1,31 @@
 import React from "react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { timelineContext } from "../../App";
 import Call from "../../assets/call.png";
 import Text from "../../assets/text.png";
 import Video from "../../assets/video.png";
+import { FaAngleDown } from "react-icons/fa";
 
 const Timeline = () => {
   const { calls, setCalls, texts, setTexts, videos, setVideos, tl, setTl } =
     useContext(timelineContext);
+
+  const[view, setView] = useState("All");
+
+  let dataToShow = [];
+  if(view === "Call"){
+    dataToShow = calls;
+  }
+  else if(view === "Text"){
+    dataToShow = texts;
+  }
+  else if(view === "Video"){
+    dataToShow = videos;
+  }
+  else if(view === "All"){
+    dataToShow = tl;
+  }
+
   const picType = (data) => {
     if (data.action === "Call") {
       return Call;
@@ -24,24 +42,30 @@ const Timeline = () => {
       <h1 className="font-bold text-5xl mb-6">Timeline</h1>
       <div className="dropdown dropdown-start mb-6">
         <div tabIndex={0} role="button" className="btn m-1">
-          Filter timeline ⬇️
+          Filter timeline <FaAngleDown />
         </div>
         <ul
-          tabIndex="-1"
+          tabIndex="0"
           className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
         >
           <li>
-            <a>Item 1</a>
+            <a onClick={()=>setView("All")}>All</a>
           </li>
           <li>
-            <a>Item 2</a>
+            <a onClick={()=>setView("Call")}>Calls</a>
+          </li>
+          <li>
+            <a onClick={()=>setView("Text")}>Texts</a>
+          </li>
+          <li>
+            <a onClick={()=>setView("Video")}>Videos</a>
           </li>
         </ul>
       </div>
       <div className="flex flex-col gap-4">
-        {tl.map((data) => {
+        {dataToShow.map((data, index) => {
           return (
-            <div className="flex gap-4 items-center bg-white rounded-xl border border-base-300 p-4">
+            <div key={index} className="flex gap-4 items-center bg-white rounded-xl border border-base-300 p-4">
               <div>
                 <img src={picType(data)}></img>
               </div>
