@@ -5,24 +5,21 @@ import Call from "../../assets/call.png";
 import Text from "../../assets/text.png";
 import Video from "../../assets/video.png";
 import { FaAngleDown } from "react-icons/fa";
+import EmptyTimeline from "../emptyTimeline/EmptyTimeline";
 
 const Timeline = () => {
-  const { calls, texts, videos, tl } =
-    useContext(timelineContext);
+  const { calls, texts, videos, tl } = useContext(timelineContext);
 
-  const[view, setView] = useState("All");
+  const [view, setView] = useState("All");
 
   let dataToShow = [];
-  if(view === "Call"){
+  if (view === "Call") {
     dataToShow = calls;
-  }
-  else if(view === "Text"){
+  } else if (view === "Text") {
     dataToShow = texts;
-  }
-  else if(view === "Video"){
+  } else if (view === "Video") {
     dataToShow = videos;
-  }
-  else if(view === "All"){
+  } else if (view === "All") {
     dataToShow = tl;
   }
 
@@ -49,46 +46,53 @@ const Timeline = () => {
           className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
         >
           <li>
-            <a onClick={()=>setView("All")}>All</a>
+            <a onClick={() => setView("All")}>All</a>
           </li>
           <li>
-            <a onClick={()=>setView("Call")}>Calls</a>
+            <a onClick={() => setView("Call")}>Calls</a>
           </li>
           <li>
-            <a onClick={()=>setView("Text")}>Texts</a>
+            <a onClick={() => setView("Text")}>Texts</a>
           </li>
           <li>
-            <a onClick={()=>setView("Video")}>Videos</a>
+            <a onClick={() => setView("Video")}>Videos</a>
           </li>
         </ul>
       </div>
       <div className="flex flex-col gap-4">
-        {dataToShow.map((data, index) => {
-          return (
-            <div key={index} className="flex gap-4 items-center bg-white rounded-xl border border-base-300 p-4">
-              <div>
-                <img src={picType(data)}></img>
+        {dataToShow.length === 0 ? (
+          <EmptyTimeline></EmptyTimeline>
+        ) : (
+          dataToShow.map((data, index) => {
+            return (
+              <div
+                key={index}
+                className="flex gap-4 items-center bg-white rounded-xl border border-base-300 p-4"
+              >
+                <div>
+                  <img src={picType(data)}></img>
+                </div>
+                <div>
+                  <p>
+                    <span className="font-medium text-xl text-[#244D3F]">
+                      {data.action}
+                    </span>{" "}
+                    <span className="text-lg text-[#64748B]">
+                      with {data.name}
+                    </span>
+                  </p>
+                  <p className="font-medium text-lg text-[#64748B]">
+                    {new Date(data.time).toLocaleDateString("en-US", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p>
-                  <span className="font-medium text-xl text-[#244D3F]">
-                    {data.action}
-                  </span>{" "}
-                  <span className="text-lg text-[#64748B]">
-                    with {data.name}
-                  </span>
-                </p>
-                <p className="font-medium text-lg text-[#64748B]">
-                  {new Date(data.time).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })
+        )}
       </div>
     </div>
   );
