@@ -1,16 +1,34 @@
-# React + Vite
+# KeenKeeper
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+**KeenKeeper** is a social media–inspired friendship management platform that helps users stay connected with their friends in a meaningful way. It allows users to track their relationships, view friend statuses, and log interactions such as calls, texts, and video chats.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The website provides a personalized dashboard where users can see how many friends they have, who is on track, and who needs attention. Each friend has a detailed profile with bio information and quick interaction options. Users can also view a timeline of all interactions and analyze their communication habits through visual stats.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- React JS
+- JavaScript (ES6+)
+- Tailwind CSS
+- DaisyUI
+- React Icons
+- Recharts
+- React Router
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Key Features
+
+### 1. Friend Relationship Tracking
+Easily manage your friends and track relationship status such as **on-track**, **almost due**, and **overdue** to maintain meaningful connections.
+
+### 2. Interactive Friend Profiles
+Each friend has a dedicated profile page with bio details and quick actions like **call, text, and video interaction tracking**.
+
+### 3. Activity Timeline & Analytics
+A timeline view logs all interactions in chronological order, while a stats dashboard visualizes communication patterns using interactive charts.
+
+---
