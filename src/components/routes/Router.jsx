@@ -4,6 +4,7 @@ import Homepage from "../homepage/Homepage";
 import App from "../../App";
 import FriendDetails from "../friendDetails/FriendDetails";
 import Timeline from "../timeline/Timeline";
+import NotFound from "../notFound/NotFound";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -25,7 +26,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <h1>Error 404</h1>,
+        element: <NotFound></NotFound>,
       },
     ],
   },
